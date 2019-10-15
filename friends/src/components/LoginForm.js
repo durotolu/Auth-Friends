@@ -1,10 +1,44 @@
 import React, { useRef } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const StyledLoginForm = styled.div`
+    background-color: #c299fc;
+
+    form {
+        margin-top: 10em;
+    }
+
+    .logout {
+        margin-left: 90em;
+        margin-top: 1em;
+    }
+
+    button {
+        background-color: #c299fc;
+        border-radius: 2em;
+        width: 7em;
+        color: #6807f9;
+    }
+
+    label {
+            color: #ffd739;
+
+            input {
+                width: 20em;
+            }
+        }
+`
 
 export default function LoginForm(props) {
     //const [formInputValue, setFormInputValue] = useState('')
     const usernameRef = useRef();
     const passwordRef = useRef();
+
+    const onLogout = () => {
+        localStorage.removeItem('token');
+        props.history.replace('/')
+    }
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -27,14 +61,22 @@ export default function LoginForm(props) {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <label>Username
-                <input type='text' ref={usernameRef} name='username' />
-            </label>
-            <label>Password
-                <input type='text' ref={passwordRef} name='password' />
-            </label>
-            <button>Submit</button>
-        </form>
+        <StyledLoginForm>
+            <button className='logout' onClick={onLogout} >Log Out</button>
+            <form onSubmit={onSubmit}>
+                <div>
+                    <label>Username
+                        <input type='text' ref={usernameRef} name='username' />
+                    </label>
+                </div>
+                <div>
+                    <label>Password
+                        <input type='text' ref={passwordRef} name='password' />
+                    </label>
+                </div>
+                <button>Log In</button>
+            </form>
+        </StyledLoginForm>
+        
     )
 }
