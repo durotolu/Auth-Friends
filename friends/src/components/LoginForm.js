@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import axios from 'axios';
 
-export default function Form(props) {
+export default function LoginForm(props) {
     //const [formInputValue, setFormInputValue] = useState('')
     const usernameRef = useRef();
     const passwordRef = useRef();
