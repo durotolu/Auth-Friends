@@ -1,5 +1,29 @@
 import React, { useRef } from 'react';
 import withAuth from "../axios/axios";
+import styled from 'styled-components';
+
+const StyledFriendsForm = styled.div`
+    background-color: #9852f9;
+
+    button {
+        background-color: #c299fc;
+        border-radius: 2em;
+        width: 7em;
+        color: #6807f9;
+    }
+
+    div {
+        margin: 0.5em auto;
+
+        label {
+            color: #ffd739;
+
+            input {
+                width: 20em;
+            }
+        }
+    }
+`
 
 export default function FriendsForm (props) {
 
@@ -38,34 +62,37 @@ export default function FriendsForm (props) {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <div>
-                <label>name
-                    <input type='text' ref={nameRef} name='name' />
-                </label>
-            </div>
-            <div>
-                <label>age
-                    <input type='text' ref={ageRef} name='age' />
-                </label>
-            </div>
-            <div>
-                <label>email
-                    <input type='email' ref={emailRef} name='email' />
-                </label>
-            </div>
-            <div>
-                <label>height
-                    <input type='height' ref={heightRef} name='height' />
-                </label>
-            </div>
-            <div>
-                <label>sports
-                    <input type='sports' ref={sportsRef} name='sports' />
-                </label>
-            </div>
-            
-            <button>Submit</button>
-        </form>
+        <StyledFriendsForm>
+            <form onSubmit={onSubmit}>
+                <div>
+                    <label>Name
+                        <input type='text' ref={nameRef} name='name' />
+                    </label>
+                </div>
+                <div>
+                    <label>Age
+                        <input type='text' ref={ageRef} name='age' />
+                    </label>
+                </div>
+                <div>
+                    <label>Email
+                        <input type='email' ref={emailRef} name='email' />
+                    </label>
+                </div>
+                <div>
+                    <label>Height
+                        <input type='height' ref={heightRef} name='height' />
+                    </label>
+                </div>
+                <div>
+                    <label>Sport
+                        <input type='sports' ref={sportsRef} name='sports' />
+                    </label>
+                </div>
+                
+                <button>Add Friend</button>
+            </form>
+        </StyledFriendsForm>
 )
 }
+
