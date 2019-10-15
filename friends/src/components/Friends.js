@@ -19,7 +19,10 @@ export default function Friends () {
         <div>
             <FriendsForm friends={friends} setFriends={setFriends} />
             <div>
-                {friends.map(friend => <div>{friend.name}</div>)}
+                {friends.map(friend => <div>
+                                            <span>Name: {friend.name}</span>
+                                            <span>Age: {friend.age}</span>
+                                        </div>)}
             </div>
         </div>
     )
